@@ -1,13 +1,11 @@
 import React from "react";
+import "../../src/index";
 
-const Scores = ({ courseName, courseResults }) => {
-  // Function to apply warning class for low scores
-  const getScoreClass = (score) => (score < 50 ? "warning" : "");
-
+function scores({ courseName, courseResults }) {
   return (
-    <div className="course-container">
-      <h2>{courseName} Results</h2>
-      <table className="score-table">
+    <section className="scores">
+      <h1>{courseName}</h1>
+      <table>
         <thead>
           <tr>
             <th>First Name</th>
@@ -20,13 +18,13 @@ const Scores = ({ courseName, courseResults }) => {
             <tr key={index}>
               <td>{student.firstName}</td>
               <td>{student.lastName}</td>
-              <td className={getScoreClass(student.score)}>{student.score}</td>
+              <td className={student.score < 50 ? "warning" : ""}>{student.score}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
-};
+}
 
-export default Scores;
+export default scores;
